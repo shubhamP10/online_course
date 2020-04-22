@@ -1,0 +1,61 @@
+body
+{
+	background-color: ;
+}
+.courseContainer
+{
+	text-align: center;
+	/*background-color: lightyellow;*/
+	width: 70%;
+	margin-left: 15%;
+	padding: 1%;
+	/*box-shadow: 5px 5px 10px 1px grey;*/
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.courseListContainer
+{
+	
+}
+.checkST
+{
+
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  /*margin-left: 15%;*/
+  border-radius: 25px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.tblData:hover
+{
+	background-color: lightgray;
+}
+.tblHead
+{
+	background-color: #67c7e0;
+}
+.checkST
+{
+	width: 50px;
+	text-align: center;
+}
+.certificate
+{
+	width: 50px;
+	text-align: center;	
+}
+.courseTitle
+{
+	text-decoration: none; 
+	color: black;
+	/*font-weight: bold;*/
+	font-family: 'times'
+}
