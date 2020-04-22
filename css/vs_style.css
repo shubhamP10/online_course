@@ -1,0 +1,143 @@
+/*
+This is StyleSheet for all pages
+*/
+
+/***************************Global Styles***********************************/
+
+.vs_table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 25px;
+}
+.vs_tblHead
+{
+	background-color: #67c7e0;
+}
+.vs_checkST
+{
+	width: 50px;
+	text-align: center;
+}
+.vs_slno
+{
+	width: 40px;
+	text-align: center;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+/**************************************************************/
+
+/*//////////////////////this is for course.php////////////////////*/
+
+.vs_courseContainer
+{
+	text-align: center;
+	width: 70%;
+	margin-left: 15%;
+	padding: 1%;
+	/*box-shadow: 5px 5px 10px 1px grey;*/
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.vs_courseTitle
+{
+	text-decoration: none; 
+	color: black;
+	/*font-weight: bold;*/
+	font-family: 'times'
+}
+
+
+
+
+
+/*/////////////////////this is for lessons.php////////////////////*/
+.vs_lessonsContainer
+{
+	width: 70%;
+	margin-left: 15%;
+	padding: 1%;
+	/*box-shadow: 5px 5px 10px 1px grey;*/
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.vs_lessonsTitle
+{
+	text-decoration: none; 
+	color: black;
+	font-weight: bold;
+}
+
+
+/* ////////////////// this is for lesson.php ↓↓ /////////////// */
+.vs_lesson_container
+{
+	text-align: center;
+	width: 90%;
+	margin-left:4%;
+	padding: 1%;
+	/*box-shadow: 5px 5px 10px 1px grey;*/
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.vs_video
+{
+	margin-left: 18%;
+	width: 60%;
+	height: 23rem;
+	background-color: lightgray;
+	border-radius: 1%;
+	padding: 1em;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.vs_iframe
+{
+
+	width: 100%;
+	height: 100%;
+}
+.vs_desc
+{
+
+	font-weight: bold;
+}
+
+.vs_descDiv
+{
+	border-radius: 0.5em;
+	margin-top: 2%;
+	padding: 1%;
+	background-color: lightgreen;
+	width: 70%;
+	margin-left: 13%;
+}
+
+.vs_vocDiv
+{
+	margin-top: 2%;
+	padding: 0.5%;
+	width: 85%;
+	margin-left: 6%;
+}
+.vs_vocTitle
+{
+	padding: 1%;
+	background-color: lightgray;
+	width: 98%;
+	text-align: left;
+	font-weight: bold;
+}
+.vs_data:hover
+{
+	background-color: #def6ff;
+}
+
+.vs_title
+{
+	text-decoration: none; 
+	color: black;
+	font-family: 'times'
+}
+
