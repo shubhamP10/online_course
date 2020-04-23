@@ -19,6 +19,7 @@
 <html>
 <head>
 	<title><?=$row[2]?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="./css/vs_style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -77,7 +78,7 @@
 				?>
 				<tr class="vs_data">
 					<td class="vs_slno"><?=$i?></td>
-					<td><a class="vs_title" href="quiz.php?quizID=<?=$value['ID']?>"><?=$value['quiz_title']?></a></td>
+					<td><a class="vs_title" href="quiz.php?quizID=<?=$value['ID']?>&quizType=<?=$value['quiz_type']?>"><?=$value['quiz_title']?></a></td>
 					<td class="vs_checkST"><span class="fa fa-check-square" style="font-size: 25px;" aria-hidden='true'></span></td>
 				</tr>
 				<?php

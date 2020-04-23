@@ -32,7 +32,7 @@
 					
 				?>
 				<tr class="vs_data">
-					<td><a href="lessons.php?courseID=<?=$value['ID']?>&course=<?=$value['course_title']?>" class="vs_courseTitle" title="<?=$value['course_title']?>">► <?=$value['course_title']?></a></td>
+					<td><span><a href="lessons.php?courseID=<?=$value['ID']?>&course=<?=$value['course_title']?>" class="vs_courseTitle" title="<?=$value['course_title']?>">► <?=$value['course_title']?></a></span></td>
 					<td class="vs_checkST"><span class="fa fa-check-square" style="font-size: 25px;" aria-hidden='true'></span></td>
 				</tr>
 				<?php
