@@ -75,21 +75,87 @@ $time = gmdate("i:s", $difference);
 			$j=1;
 			foreach ($result as $key => $value) 
 			{
-				echo "<table class=vs_review_tbl>";
-				echo "<tr><th class=vs_qNo><span>Question $j </th><th class=vs_q> $value[question] </span></th>";
+				// echo "<table class=vs_review_tbl>";
+				// echo "<tr><th class=vs_qNo><span>Question $j </th><th class=vs_q> $value[question] </span></th>";
 				if($_POST['ans'.$j] == $value['ans'])
 				{
-					echo "<th class=vs_res><span style=color:green>Correct</span></th></tr>";
+					$ansColor = "green";
 					
 				}
 				else
 				{
-					echo "<th class=vs_res><span style=color:red>Incorrect</span></th></tr>";
+					$ansColor = "red";
 				}
-				echo "</table>";
-				$j++;
-			}
-			?>	
+				// echo "</table>";
+				// $j++;
+			//}
+			?>
+			<div class="vs_questionSection" name="quizQuestion">
+				<div class="vs_imageSection">
+					<img src="./images/<?=$value['img']?>" class="vs_image">
+				</div>
+
+				<div class="vs_question">
+					<div class="vs_eng">
+						<div style="margin-top: 10%;">
+								<span class="vs_engRev">English</span>
+								<div class="vs_eng_qDiv">
+									<span><?=$value['question']?></span>
+								</div>
+						</div>
+					</div>
+					<div class="vs_ned">
+						<div style="margin-top: 10%;">
+								<span class="vs_nedRev">Nederlands</span>
+								<div class="vs_ned_qDiv">
+									...?
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="vs_optionSection">
+					<div class="vs_options">
+						
+							<table class="vs_optionTbl">
+								<?php if($value['ans'] == 1){ ?>
+								<tr><td class="vs_correct"><?=$value['opt1']?></td></tr>
+							
+								<tr><td><?=$value['opt2']?></td></tr>
+								<tr><td><?=$value['opt3']?></td></tr>
+								<tr><td><?=$value['opt4']?></td></tr>
+								<tr><td>Your Choice : <span style="color: <?=$ansColor?> "><?=$value['opt'.$ans1]?></span></td></tr>
+								<?php } ?>
+
+								<?php if($value['ans'] == 2){ ?>
+								<tr><td><?=$value['opt1']?></td></tr>
+								<tr><td class="vs_correct"><?=$value['opt2']?></td></tr>
+								<tr><td><?=$value['opt3']?></td></tr>
+								<tr><td><?=$value['opt4']?></td></tr>
+								<tr><td>Your Choice : <span style="color: <?=$ansColor?> "><?=$value['opt'.$ans2]?></span></td></tr>
+								<?php } ?>
+
+								<?php if($value['ans'] == 3){ ?>
+								<tr><td><?=$value['opt1']?></td></tr>
+								<tr><td><?=$value['opt2']?></td></tr>
+								<tr><td class="vs_correct"><?=$value['opt3']?></td></tr>
+								<tr><td><?=$value['opt4']?></td></tr>
+								<tr><td>Your Choice : <span style="color: <?=$ansColor?> "><?=$value['opt'.$ans3]?></span></td></tr>
+								<?php } ?>
+
+								<?php if($value['ans'] == 4){ ?>
+								<tr><td><?=$value['opt1']?></td></tr>
+								<tr><td><?=$value['opt2']?></td></tr>
+								<tr><td><?=$value['opt3']?></td></tr>
+								<tr><td class="vs_correct"><?=$value['opt4']?></td></tr>
+								<tr><td>Your Choice : <span style="color: <?=$ansColor?> "><?=$value['opt'.$ans4]?></td></tr>
+								<?php } ?>
+							</table>
+						<!-- <input type="text" name="sample<?=$i?>" value="sample count" /> -->
+					</div>
+				</div>
+			</div>	
+			<hr>
+		<?php $j++; } ?>
 		</div>
 	</div>
 </body>

@@ -65,10 +65,10 @@
 					<div class="vs_options">
 						
 							<table class="vs_optionTbl">
-								<tr><td><input type="radio" name="ans<?=$i?>" value="1" required><?=$value['opt1']?></td></tr>
-								<tr><td><input type="radio" name="ans<?=$i?>" value="2"><?=$value['opt2']?></td></tr>
-								<tr><td><input type="radio" name="ans<?=$i?>" value="3"><?=$value['opt3']?></td></tr>
-								<tr><td><input type="radio" name="ans<?=$i?>" value="4"><?=$value['opt4']?></td></tr>
+								<tr><td><input type="radio" name="ans<?=$i?>" value="1" class="vs_radio" required><?=$value['opt1']?></td></tr>
+								<tr><td><input type="radio" name="ans<?=$i?>" value="2" class="vs_radio"><?=$value['opt2']?></td></tr>
+								<tr><td><input type="radio" name="ans<?=$i?>" value="3" class="vs_radio"><?=$value['opt3']?></td></tr>
+								<tr><td><input type="radio" name="ans<?=$i?>" value="4" class="vs_radio"><?=$value['opt4']?></td></tr>
 							</table>
 						<!-- <input type="text" name="sample<?=$i?>" value="sample count" /> -->
 					</div>
