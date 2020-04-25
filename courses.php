@@ -12,28 +12,28 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>All Courses</title>
-	<link rel="stylesheet" type="text/css" href="./css/mainStyle.css">
+	<link rel="stylesheet" type="text/css" href="./css/vs_style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-	<div class="courseContainer">
-		<div class="courseHeading">
+	<div class="vs_courseContainer">
+		<div class="vs_courseHeading">
 			<h2>All Courses</h2>
 		</div>
-		<div class="courseListContainer">
-			<table class="coursetbl">
-				<tr class="tblHead">
+		<div class="vs_courseListContainer">
+			<table class="vs_table">
+				<tr class="vs_tblHead">
 					<th>Registered Courses</th>
-					<th class="checkST">Status</th>
+					<th class="vs_checkST">Status</th>
 				</tr>
 				<?php 
 					foreach ($result as $key => $value)
 					{
 					
 				?>
-				<tr class="tblData">
-					<td><a href="lessons.php?courseID=<?=$value['ID']?>&course=<?=$value['course_title']?>" class="courseTitle" title="<?=$value['course_title']?>">► <?=$value['course_title']?></a></td>
-					<td class="checkST"><span class="fa fa-check-square" style="font-size: 25px;" aria-hidden='true'></span></td>
+				<tr class="vs_data">
+					<td><span><a href="lessons.php?courseID=<?=$value['ID']?>&course=<?=$value['course_title']?>" class="vs_courseTitle" title="<?=$value['course_title']?>">► <?=$value['course_title']?></a></span></td>
+					<td class="vs_checkST"><span class="fa fa-check-square" style="font-size: 25px;" aria-hidden='true'></span></td>
 				</tr>
 				<?php
 					}
