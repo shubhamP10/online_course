@@ -20,7 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/vs_style.css">
 </head>
 <body bgcolor="lightyellow">
-	<div class="vs_quizContainer">
+	<div class="vs_quizContainer" id="vs_quizContainer">
 		<div class="vs_quizTitleDiv">
 			<span class="vs_quizTitle"><?=$detailsRow[1]?></span>
 		</div>
@@ -90,5 +90,15 @@
 		
 	</div>
 	</div>
+	<script type="text/javascript">
+			var isMobile = /iPhone|iPod|Android/i.test(navigator.userAgent);
+			var element = document.getElementById('vs_quizContainer');
+			if (isMobile) {
+	  			element.innerHTML = "You are using Mobile...!!! Please Open Quiz in Desktop Mode!!";
+	  			alert("You are using Mobile...!!! Please Open Quiz in Desktop Mode!!");
+			} else {
+				// element.innerHTML = "You are using Desktop";
+			}
+		</script>
 </body>
 </html>
