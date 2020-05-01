@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	session_start(); // user session starts
 	$userID = $_SESSION['userID'];
 	if(!$userID)
 	{
@@ -7,13 +7,30 @@
 	}
 	else
 	{
-	//session_start();
 	extract($_GET);
-	$_SESSION['start_time'] = time();
 	include './connection/connection.php';
-	// $quizID = $_GET['quizID'];
-	// $courseID = $_GET['courseID'];
-	// $quizType = $_GET['quizType'];
+		$checkLockedQuery = "SELECT * FROM `user_quiz` WHERE module_ID = $quizID AND user_ID = $userID AND module = 'quiz'";
+		$checkLockedResult = mysqli_query($con,$checkLockedQuery) or die($con);
+		if(!(mysqli_num_rows($checkLockedResult)))
+		{
+	?>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Quiz Locked!!!</title>
+	</head>
+	<body>
+		<center>
+			<h1>This Quiz is Locked... Complete the Previous Quiz First...</h1>
+		</center>
+	</body>
+	</html>
+	<?php
+		}
+		else
+		{
+	$_SESSION['start_time'] = time();
+	
 	$quizSQL = "SELECT * FROM `learning_questions` WHERE quiz_ID=$quizID ORDER BY `learning_questions`.`ID` ASC";
 	$result = mysqli_query($con,$quizSQL);
 
@@ -39,7 +56,7 @@
 				<div class="vs_quizTitleDiv">
 					<span class="vs_quizTitle"><?=$detailsRow[1]?></span>
 				</div>
-				<form action="validateQuiz.php?quizID=<?=$quizID?>" method="post" name="optionFrm">
+				<form action="validateQuiz.php?quizID=<?=$quizID?>&lessonID=<?=$lessonID?>&courseID=<?=$courseID?>" method="post" name="optionFrm">
 				<?php
 						$i=1;
 					foreach ($result as $key => $value) 
@@ -85,7 +102,6 @@
 											<tr><td style="border-bottom:none; border-top:none"><input type="radio" name="ans<?=$i?>" value="3" class="vs_radio"><?=$value['opt3']?></td></tr>
 											<tr><td style="border-bottom:none; border-top:none"><input type="radio" name="ans<?=$i?>" value="4" class="vs_radio"><?=$value['opt4']?></td></tr>
 										</table>
-									<!-- <input type="text" name="sample<?=$i?>" value="sample count" /> -->
 								</div>
 							</div>
 						</div>
@@ -104,27 +120,9 @@
 				</form>
 			</div>
 		</div>
-		<!-- <div class="vs_lessonContainer">
-			<div class="vs_lesson">
-				<table class="vs_lesson_table">
-					<tr class="vs_lessonHead">
-						<th>Lessons</th>
-					</tr>
-					<?php
-						foreach ($lessonsResult as $key => $value) {
-					?>
-					<tr class="vs_lessonsList">
-						<td><a href="lesson.php?lessonID=<?=$value['ID']?>&courseID=<?=$courseID?>" class="vs_lessonItem"><?=$value['lesson_title']?></a></td>
-					</tr>
-					<?php
-					}
-					?>
-				</table>
-
-			</div>
-		</div> -->
 	</body>
 </html>
 <?php
 	}
+	} // end of user session
 ?>

@@ -2,6 +2,8 @@
 extract($_POST);
 extract($_GET);
 session_start();
+print_r($_POST);
+$userID = $_SESSION['userID'];
 $difference = 0;
 if (is_int($_SESSION['start_time'])){ // if the cookie exists:
     $difference = time() - $_SESSION['start_time'];
@@ -9,6 +11,8 @@ if (is_int($_SESSION['start_time'])){ // if the cookie exists:
     echo "You have been here some time in the future";
 }
 include './connection/connection.php';
+
+
 $questionQuery = "SELECT * FROM `learning_questions` WHERE quiz_id=$quizID ORDER BY `ID` ASC";
 $result = mysqli_query($con,$questionQuery) or die(mysqli_error($con));
 $total = mysqli_num_rows($result);
@@ -32,14 +36,171 @@ foreach ($result as $key => $value)
 }
 $score = round(($correct/$total)*100,2);
 $time = gmdate("i:s", $difference);
-if ($score >= 80) 
-{
-	
+
+
+/*************New Code **********/
+
+
+//If Fail. Just update score and status = 0
+if($score < 80) {
+    
+    //Update score and status
+    $sqlUpdate = "UPDATE `user_quiz` SET score = $score, status = 0 WHERE user_id = $userID AND module_id=$quizID AND module='quiz'";
+    
+    
+    if(mysqli_query($con, $sqlUpdate)){
+        echo "Records were updated successfully.";
+    } else {
+        echo "ERROR: " . mysqli_error($con);
+    }
+
+
+} else {
+
+    //**********************PASS*******************
+
+    //Update score and status
+    $sqlUpdate = "UPDATE `user_quiz` SET score = $score, status = 1 WHERE user_id = $userID AND module_id=$quizID AND module='quiz'";
+    
+    
+    if(mysqli_query($con, $sqlUpdate)){
+        echo "Records were updated successfully.";
+    } else {
+        echo "ERROR: " . mysqli_error($con);
+    }
+    
+    
+    $lastQuizId = getNextId ('quiz', $quizID);
+    
+    //If $lastQuizId is 0 then the current quiz is last quiz. Because Quiz is pass so update Lesson stauts to 1
+    if($lastQuizId == 0) { 
+        
+        //Update Lesson record in the User_Quiz table
+        //----SQL CODE -----
+        // echo " Last Quiz ID : ".$lastQuizId;
+    	$updateLessonQuery = "UPDATE user_quiz SET status = 1 WHERE module_ID = $lessonID AND module = 'lesson'";
+    	if(mysqli_query($con,$updateLessonQuery))
+    	{
+    		echo "<br>Lesson Status Updated";
+    	}
+        
+        //Find the next lesson
+        $lastLessonId = getNextId ('lesson', $lessonID);
+
+            if($lastLessonId == 0) {
+        
+                //Update Course record in the User_Quiz table
+                $updateLessonQuery = "UPDATE user_quiz SET status = 1 WHERE module_ID = $courseID AND module = 'course'";
+                if(mysqli_query($con,$updateLessonQuery))
+                {
+                	echo "<br>Course Status Updated";
+                }
+
+            } else {
+                //If last lesson id is not 0 then create record of the next Lesson
+                
+                $newLessonQuery = "INSERT INTO `user_quiz`(`user_ID`, `module_ID`, `module`, `score`, `status`) VALUES ($userID,$lastLessonId,'lesson',0,0)";
+                if(mysqli_query($con,$newLessonQuery))
+                {
+                	echo "<br>New Lesson Unlocked";
+                }
+                else
+                {
+                	mysqli_error($con);
+                }
+            }
+        
+    } else {
+                //If last quiz id is not 0 then create record of the next quiz
+                // echo " Last Quiz ID : ".$lastQuizId;
+                $newLessonQuery = "INSERT INTO `user_quiz`(`user_ID`, `module_ID`, `module`, `score`, `status`) VALUES ($userID,$lastQuizId,'quiz',0,0)";
+                if(mysqli_query($con,$newLessonQuery))
+                {
+                	echo "<br>New quiz Unlocked";
+                }
+                else
+                {
+                	mysqli_error($con);
+                }
+            }
 }
-else
-{
-	//echo "<script>alert('You Are Not Cleared the Test.. Try Once again..');</script>";
+
+//Function to get the next ID. If no next record then it returns 0
+
+function getNextId ($module, $currentId) {
+	include './connection/connection.php';
+	// echo $module;
+    //Get sql to run
+    $lessonID = $_GET['lessonID'];
+    $courseID = $_GET['courseID'];
+    $resultLastId = '';
+    $isCurrent = 0;
+    $lastId = 0;
+    switch($module) {
+        case 'quiz':
+		            $sqlLastId = "SELECT * FROM `learning_quiz` WHERE lesson_ID = $lessonID ORDER BY `learning_quiz`.`ID` ASC";
+		            $resultLastId = mysqli_query($con,$sqlLastId) or die(mysqli_error($con));
+		            foreach ($resultLastId as $key => $value)
+		            {
+	            	    //Is the id same as current
+	            	     //If record-pointer passed the current then capture the ID as next id and get out
+		                if($isCurrent == 1) {
+		                     $lastId = $value['ID'];
+		                     break;
+		                }
+	            		if($currentId == $value['ID'])
+	            		{
+	            		       $isCurrent = 1;
+
+	            		}
+		               
+		            }
+            // return $lastId;
+            break;
+        case 'lesson':
+			        $sqlLastId = "SELECT * FROM `learning_lessons` WHERE course_ID = $courseID ORDER BY `learning_lessons`.`ID` ASC";
+			        $resultLastId = mysqli_query($con,$sqlLastId) or die(mysqli_error($con));
+			        foreach ($resultLastId as $key => $value)
+			        {
+			        	//If record-pointer passed the current then capture the ID as next id and get out
+			        	if($isCurrent == 1) {
+			        	     $lastId = $value['ID'];
+			        	     break;
+			        	}
+			        	//Is the id same as current
+			        	if($currentId == $value['ID'])
+			        	{
+			        	       $isCurrent = 1;
+
+			        	}
+			        }
+			        // return $lastId;
+			        break;
+    }
+    
+    ////// I Moved this code to inside Switch-case ↓↓↓↓
+   
+    //mysqli_fetch_array($resultLastId));
+    // foreach ($resultLastId as $key => $value)
+    // {
+    //     //If record-pointer passed the current then capture the ID as next id and get out
+    //     if($isCurrent == 1) {
+    //          $lastId = $value['ID'];
+    //          break;
+    //     }								
+        
+    //     //Is the id same as current
+    // 	if($currentId == $value['ID'])
+    // 	{
+    // 	       $isCurrent = 1;
+
+    // 	}
+    // }
+    
+    return $lastId;
+
 }
+/**********************/
 
 // session_destroy();
 ?>

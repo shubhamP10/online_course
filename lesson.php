@@ -22,7 +22,27 @@
 
 		$quizSQL = "SELECT * FROM `learning_quiz` WHERE lesson_ID=$lessonID ORDER BY `learning_quiz`.`ID` ASC";
 		$quizRes = mysqli_query($con,$quizSQL) or die("Failed To Fetch Quiz Data");
-	}	
+	}
+		$checkLockedQuery = "SELECT * FROM `user_quiz` WHERE module_ID = $lessonID AND user_ID = $userID AND module = 'lesson'";
+		$checkLockedResult = mysqli_query($con,$checkLockedQuery) or die($con);
+		if(!(mysqli_num_rows($checkLockedResult)))
+		{
+	?>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Lesson Locked!!!</title>
+	</head>
+	<body>
+		<center>
+			<h1>This Lesson is Locked... Complete the Previous Lesson First...</h1>
+		</center>
+	</body>
+	</html>
+	<?php
+		}
+		else
+		{	
 ?>
 <!DOCTYPE html>
 <html>
@@ -103,5 +123,6 @@
 </body>
 </html>
 <?php
+	}
 	} //end of session
 ?>
