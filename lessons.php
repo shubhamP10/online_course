@@ -1,4 +1,13 @@
 <?php
+	session_start();
+	$userID = $_SESSION['userID'];
+	if(!$userID)
+	{
+		header("location:courses.php");
+	}
+	else
+	{
+		//echo "$userID";
 	include './connection/connection.php';
 	if($con)
 	{
@@ -39,12 +48,13 @@
 				?>
 				<tr class="vs_data">
 					<td class="vs_slno"><?=$i?></td>
-					<td><a href="lesson.php?lessonID=<?=$value['ID']?>" class="vs_lessonsTitle" title="<?=$value['lesson_title']?>"><?=$value['lesson_title']?></a>
+					<td><a href="lesson.php?lessonID=<?=$value['ID']?>&courseID=<?=$courseID?>" class="vs_lessonsTitle" title="<?=$value['lesson_title']?>"><?=$value['lesson_title']?></a>
 					<td class="checkST"><span class="fa fa-check-square" style="font-size: 25px;" aria-hidden='true'></span></td>
 				</tr>
 				<?php
 				$i++;
 					}
+
 				?>
 
 			</table>
@@ -53,3 +63,6 @@
 	</form>
 </body>
 </html>
+<?php
+	} // end of user session
+?>

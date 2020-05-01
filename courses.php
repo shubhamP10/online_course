@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	$_SESSION['userID']=301;
 	include './connection/connection.php';
 	if($con)
 	{

@@ -32,6 +32,14 @@ foreach ($result as $key => $value)
 }
 $score = round(($correct/$total)*100,2);
 $time = gmdate("i:s", $difference);
+if ($score >= 80) 
+{
+	
+}
+else
+{
+	//echo "<script>alert('You Are Not Cleared the Test.. Try Once again..');</script>";
+}
 
 // session_destroy();
 ?>

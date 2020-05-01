@@ -1,8 +1,17 @@
 <?php
+	session_start();
+	$userID = $_SESSION['userID'];
+	if(!$userID)
+	{
+		header("location:courses.php");
+	}
+	else
+	{
 	include './connection/connection.php';
 	if($con)
 	{
 		$lessonID = $_GET['lessonID'];
+		$courseID = $_GET['courseID'];
 		$sql = "SELECT * FROM `learning_lessons` WHERE ID=$lessonID";
 		$result = mysqli_query($con,$sql) or die("Failed To Fetch Lesson Data");
 		$row = mysqli_fetch_array($result);
@@ -78,7 +87,7 @@
 				?>
 				<tr class="vs_data">
 					<td class="vs_slno"><?=$i?></td>
-					<td><a class="vs_title" href="quiz.php?quizID=<?=$value['ID']?>&quizType=<?=$value['quiz_type']?>"><?=$value['quiz_title']?></a></td>
+					<td><a class="vs_title" href="quiz.php?quizID=<?=$value['ID']?>&quizType=<?=$value['quiz_type']?>&courseID=<?=$courseID?>&lessonID=<?=$lessonID?>"><?=$value['quiz_title']?></a></td>
 					<td class="vs_checkST"><span class="fa fa-check-square" style="font-size: 25px;" aria-hidden='true'></span></td>
 				</tr>
 				<?php
@@ -93,3 +102,6 @@
 	</div>
 </body>
 </html>
+<?php
+	} //end of session
+?>

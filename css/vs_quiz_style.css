@@ -1,0 +1,382 @@
+/***************************Global Styles***********************************/
+
+.vs_table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 25px;
+}
+.vs_tblHead
+{
+	background-color: #FFA500;
+}
+.vs_checkST
+{
+	width: 50px;
+	text-align: center;
+}
+.vs_slno
+{
+	width: 40px;
+	text-align: center;
+}
+.vs_data:hover
+{
+	background-color: #8091ff;
+	color: white;
+}
+/*td:hover
+{
+	color: white;
+}*/
+.vs_tblContent
+{
+
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  /*text-decoration: none;*/
+}
+
+/**************************************************************/
+
+
+
+/*////////////////////this is for Quiz.php ↓↓↓ ///////////////////*/
+/**{
+	box-sizing: border-box;
+}*/
+.vs_quizContainer
+{
+	/*float: left;*/
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	padding: 0.1%;
+	background-color: #ff8c00;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.vs_quizTitleDiv
+{
+	width: 100%;
+	padding: 1%;
+	text-align: left;
+}
+.vs_quizTitle
+{
+	font-size: 2vw;
+	color: #fff;
+	font-weight: bold;
+}
+.vs_quiz
+{
+	float: left;
+	width: 96%;
+	padding: 1%;
+}
+.vs_quizSection
+{
+	display: inline-grid;		
+	margin-bottom: 2%;
+	padding: 1%;
+	/*margin-left: 1%;*/
+	width: 100%;
+	background-color: white;
+}
+.vs_lessonSection
+{
+	float: right;
+	width: 30%;
+}
+.vs_lessonTitleDiv
+{
+	/*display:flex;*/
+	width: 100%;
+	padding: 1%;
+	background-color: #1f3bcc;
+	/*max-height: 1rem;*/
+}
+.vs_questionDiv1
+{
+	background-color: yellow;
+	/*padding: 1%;*/
+	width: 100%;
+}
+.vs_lessonTitle
+{
+	color: white;
+	font-size: 100%;
+	font-weight: bold;
+}
+.vs_questionSection
+{
+	/*background-color: lightgray;*/
+	width: 100%;
+	height: 94%;
+	/*margin-left: -1%;*/
+	float: left;
+	/*margin-bottom: 2%;*/
+}
+.vs_imageSection
+{
+	object-fit: contain;
+	margin-right: 3vw;
+	/*margin-top: 3vw;*/
+	background-color: white;
+	float: right;
+}
+.vs_question
+{
+	height: 40%;
+}
+.vs_optionSection
+{
+	/*display: inline-grid;*/
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	padding: 0.5%;
+	width: 99%;
+	margin-top: 10%;
+}
+.vs_image
+{
+	/*display: inline-block;	*/
+	height: 25vw;
+	border-style: solid;
+	width: 40vw;
+	/*margin-top: 8%;*/
+	border-width: 2px;
+	/*border-radius: 0.9%;*/
+	box-shadow: 2px 2px 2px 1px rgba(1, 1, 1, 1), 2px 2px 2px 1px rgba(1, 1, 1, 1);
+}
+.vs_eng
+{
+	width: 30%;
+}
+.vs_ned
+{
+	width: 30%;
+}
+.vs_engQiestion
+{
+	/*margin-left: -5vw;*/
+	font-weight: bold;
+}
+.vs_nedQiestion
+{
+	/*margin-left: -10vw;*/
+	font-weight: bold;
+}
+.vs_eng_qDiv
+{
+	width: 100%;
+	height: 3%;
+	color: white;
+	margin-left: 15%;
+	margin-top: 5%;
+	padding: 5%; 
+	background-color: #1c3fed;
+	border-width: 2px;
+	border-style: solid;
+	border-color:  #0723b0;
+	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	font-size: 200%;
+}
+.vs_ned_qDiv
+{
+	width: 100%;
+	height: 3%;
+	margin-left: 15%;
+	margin-top: 5%;
+	padding: 5%; 
+	background-color:#f06711 ;
+	color: white;
+	border-width: 2px;
+	border-style: solid;
+	border-color:brown;
+	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	font-size: 200%;
+}
+.vs_optionTbl
+{
+	width: 80%;
+	margin-left: 10%;
+	border-style: hidden;
+	/*margin-top: 5%;*/
+	border-collapse: collapse;
+	font-size: 100%;
+}
+.vs_radio
+{
+	cursor: pointer;
+}
+.btnReset
+{
+	border-style: none;
+	padding: 1%;
+	background-color: green;
+	color: #fcc;
+	font-size: 100%;
+	border-radius: 0.3em;
+	transition: 0.6s;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.btnSubmit
+{
+	/*display: inline-grid;*/
+	border-style: none;
+	padding: 1%;
+	margin-left: 1%;
+	background-color: green;
+	color: #fcc;
+	font-size: 100%;
+	border-radius: 0.3em;
+	transition: 0.6s;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.btnSubmit:hover
+{
+	background-color:#1f3bcc ;
+	color: black;
+}
+.btnReset:hover
+{
+	background-color: #1f3bcc;
+	/*color: black;*/
+}
+
+.vs_lessonContainer
+{
+	float: right;
+	width: 29%;
+	height: 100%; 	
+	background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .vs_ned_qDiv {
+    font-size: 100%;
+  }
+  .vs_eng_qDiv
+  {
+  	font-size: 100%;
+  }
+}
+
+.vs_lesson_table
+{
+	border-collapse: collapse;
+	width: 100%;
+
+}
+.vs_lessonHead
+{
+	background-color: brown;
+	color: #fff;
+}
+.vs_lessonsList
+{
+
+	text-decoration: none;
+	border-style: none;
+}
+
+.vs_lessonItem
+{
+	text-decoration: none;
+}
+
+.vs_backBtn
+{
+	margin-top: 1%;
+	display: inline-grid;
+	border-style: none;
+	padding: 1%;
+	/*margin-left: 1%;*/
+	background-color: green;
+	color: #fff;
+	font-size: 1em;
+	border-radius: 0.3em;
+	transition: 0.3s;
+	text-decoration: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/****************************************/
+
+/*************For Mobile Screens***************************/
+@media screen and (max-width: 40em) {
+
+/*    .vs_imageSection
+{
+	object-fit: contain;
+	background-color: white;
+	float: right;
+	padding-top: 	5%;
+}*/
+}
+
+@media screen and (max-width: 40em) {
+.vs_image
+{
+	height: 30vw;
+	border-style: solid;
+	width: 30vw;
+	border-width: 2px;
+	box-shadow: 2px 2px 2px 1px rgba(1, 1, 1, 1), 2px 2px 2px 1px rgba(1, 1, 1, 1);
+}
+.vs_imageSection
+{
+	object-fit: contain;
+	margin-right: 10vw;
+	margin-top: 3vw;
+	background-color: white;
+	float: right;
+}
+
+.vs_quizTitle
+{
+	font-size: 4vw;
+	color: #fff;
+	font-weight: bold;
+}
+.vs_lessonTitle
+{
+	color: white;
+	font-size: 3vw;
+	font-weight: bold;
+}
+.vs_optionSection
+{
+	/*display: inline-grid;*/
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	padding: 0.5%;
+	width: 99%;
+	height: 50%;
+	margin-top: 5.8vw;
+}
+.vs_optionTbl
+{
+	width: 80%;
+	/*margin-left: 10%;*/
+	border-style: hidden;
+	/*margin-top: 5%;*/
+	border-collapse: collapse;
+	font-size: 3.8vw;
+}
+.vs_engQiestion
+{
+	font-size: 3vw;
+	font-weight: bold;
+}
+.vs_nedQiestion
+{
+	font-size: 3vw;
+	font-weight: bold;
+}
+}
